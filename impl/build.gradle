@@ -8,7 +8,7 @@ dependencies {
     paperweight.paperDevBundle("1.21.10-R0.1-SNAPSHOT")
 
     implementation("org.ow2.asm:asm:9.9")
-    implementation(project(":api"))
+    implementation(project(":newin-api"))
 }
 
 jar {
