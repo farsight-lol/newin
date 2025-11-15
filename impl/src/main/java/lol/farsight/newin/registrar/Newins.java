@@ -17,12 +17,9 @@ import java.lang.reflect.Method;
 import java.util.jar.JarFile;
 
 public final class Newins implements NewinManager {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Newins.class);
-
     public static final Newins INSTANCE = new Newins();
 
-    private Newins() {}
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(Newins.class);
     private static final Method GET_FILE_METHOD;
     static {
         try {
@@ -32,6 +29,8 @@ public final class Newins implements NewinManager {
             throw new IllegalStateException(e);
         }
     }
+
+    private Newins() {}
 
     public void applyToPackage(
             final @NotNull JavaPlugin plugin,
