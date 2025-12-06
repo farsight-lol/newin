@@ -1,7 +1,6 @@
 package lol.farsight.newin.agent;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.lang.instrument.Instrumentation;
 
@@ -10,7 +9,7 @@ public final class InstrumentationHolder {
         throw new UnsupportedOperationException();
     }
 
-    static Instrumentation cached = null;
+    private static Instrumentation cached = null;
     static volatile Instrumentation instrumentation;
 
     public static @NotNull Instrumentation get() {

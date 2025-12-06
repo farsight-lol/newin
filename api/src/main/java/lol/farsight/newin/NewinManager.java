@@ -1,11 +1,10 @@
 package lol.farsight.newin;
 
-import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public interface NewinManager {
     void applyToPackage(
-            final @NotNull JavaPlugin plugin,
+            final @NotNull Object pluginObj,
             final @NotNull String pack
     );
 

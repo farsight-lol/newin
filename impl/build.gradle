@@ -14,7 +14,7 @@ dependencies {
 jar {
     manifest {
         attributes(
-                "Agent-Class": "lol.farsight.newin.agent.AgentEntrypoint",
+                "Agent-Class": "farsight.lol.agent.AgentEntrypoint",
                 "Can-Retransform-Classes": true,
                 "Can-Redefine-Classes": true,
         )

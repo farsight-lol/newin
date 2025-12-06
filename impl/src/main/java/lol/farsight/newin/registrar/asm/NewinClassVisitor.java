@@ -60,37 +60,35 @@ public final class NewinClassVisitor extends ClassVisitor {
             final @NotNull String descriptor,
             final boolean visible
     ) {
-        if (Objects.equals(
+        if (!Objects.equals(
                 descriptor,
                 Type.getDescriptor(Newin.class)
-        )) {
-            if (newinAnnotation != null)
-                throw new RuntimeException("Found more than one @Newin annotation on class");
+        )) return null;
 
-            return new AnnotationCollector(Newin.class) {
-                @Override
-                public void visitEnd() {
-                    newinAnnotation = (Newin) build();
+        if (newinAnnotation != null)
+            throw new RuntimeException("Found more than one @Newin annotation on class");
 
-                    {
-                        final var relocator = new Relocator(newinAnnotation.target());
+        return new AnnotationCollector(Newin.class) {
+            @Override
+            public void visitEnd() {
+                newinAnnotation = (Newin) build();
 
-                        iwcmType = relocator.add(IdentityWeakConcurrentMap.class);
-                        relocator.add(WeakKey.class);
+                {
+                    final var relocator = new Relocator(newinAnnotation.target());
 
-                        relocator.relocate();
-                    }
+                    iwcmType = relocator.add(IdentityWeakConcurrentMap.class);
+                    relocator.add(WeakKey.class);
 
-                    generator = new EphemeralClassGenerator(
-                            newinAnnotation.target(),
-                            version,
-                            iwcmType
-                    );
+                    relocator.relocate();
                 }
-            };
-        }
 
-        return null;
+                generator = new EphemeralClassGenerator(
+                        newinAnnotation.target(),
+                        version,
+                        iwcmType
+                );
+            }
+        };
     }
 
     @Override

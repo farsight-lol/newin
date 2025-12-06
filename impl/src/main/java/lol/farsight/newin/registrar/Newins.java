@@ -33,10 +33,13 @@ public final class Newins implements NewinManager {
     private Newins() {}
 
     public void applyToPackage(
-            final @NotNull JavaPlugin plugin,
+            final @NotNull Object pluginObj,
             final @NotNull String pack
     ) {
-        Preconditions.checkNotNull(plugin, "plugin");
+        Preconditions.checkNotNull(pluginObj, "plugin");
+        if (!(pluginObj instanceof JavaPlugin plugin))
+            throw new IllegalArgumentException("pluginObj is not JavaPlugin");
+
         Preconditions.checkNotNull(pack, "pack");
 
         final var packagePath = pack.replace('.', '/');
