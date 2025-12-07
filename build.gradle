@@ -1,6 +1,5 @@
 plugins {
     id("java")
-    id "org.jetbrains.kotlin.jvm" version "2.3.0-RC"
 }
 
 allprojects {
@@ -18,7 +17,6 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'org.jetbrains.kotlin.jvm'
 
     def targetJavaVersion = 21
     java {
