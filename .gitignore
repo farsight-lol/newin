@@ -4,5 +4,7 @@ build
 run
 out
 
+.env
+
 core/build
 paper/build
