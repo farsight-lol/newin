@@ -30,6 +30,7 @@ tasks {
     }
 
     shadowJar {
+        archiveFileName.set("Newin-${project.version}.jar")
         archiveClassifier.set("")
     }
 }
