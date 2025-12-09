@@ -41,7 +41,11 @@ public final class NewinRegistrar {
             return;
         }
 
-        try (final var in = ClassLoader.getSystemResourceAsStream("agent.jar")) {
+        var cl = NewinRegistrar.class.getClassLoader();
+        if (cl == null)
+            cl = ClassLoader.getSystemClassLoader();
+
+        try (final var in = cl.getResourceAsStream("agent.jar")) {
             if (in == null) {
                 LOGGER.error("couldn't find agent.jar in resources");
 
