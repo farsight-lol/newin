@@ -1,2 +1,2 @@
 # Newin
-Newin is a Mixin alternative for Paper, utilizing Java Agents to modify code at runtime.
+Newin is a library utilizing Java Agents to modify code at runtime.
